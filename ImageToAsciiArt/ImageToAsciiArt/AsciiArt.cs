@@ -33,6 +33,21 @@ namespace ImageToAsciiArt
         /// </summary>
         public int AsciiWidth { get; }
 
+        public static Bitmap GetResizedBitmap(Bitmap bitmap, int width)
+        {
+            // scale factor = ascii width / image width
+            // ascii height = scale factor * image height
+            int height = (int)Math.Ceiling((double)width / bitmap.Width * bitmap.Height);
+
+            Bitmap resizedBitmap = new Bitmap(width, height);
+            Graphics graphics = Graphics.FromImage(resizedBitmap);
+            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            graphics.DrawImage(bitmap, 0, 0, width, height);
+            graphics.Dispose();
+
+            return resizedBitmap;
+        }
+
         
     }
 }

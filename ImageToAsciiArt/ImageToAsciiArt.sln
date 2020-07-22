@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageToAsciiArt", "ImageToAsciiArt\ImageToAsciiArt.csproj", "{34DA5D5E-48EB-4F87-BDA0-1554149E955C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestbed", "ConsoleTestbed\ConsoleTestbed.csproj", "{70359735-BC48-4FC8-AF82-A8D26EE2A3CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{34DA5D5E-48EB-4F87-BDA0-1554149E955C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34DA5D5E-48EB-4F87-BDA0-1554149E955C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34DA5D5E-48EB-4F87-BDA0-1554149E955C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70359735-BC48-4FC8-AF82-A8D26EE2A3CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70359735-BC48-4FC8-AF82-A8D26EE2A3CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70359735-BC48-4FC8-AF82-A8D26EE2A3CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70359735-BC48-4FC8-AF82-A8D26EE2A3CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
