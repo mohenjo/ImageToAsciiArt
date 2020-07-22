@@ -13,10 +13,16 @@ namespace ConsoleTestbed
     {
         static void Main()
         {
+            // 이미지 저장 테스트
+            /*
             string imageUrl = @"C:\Users\haenn\Downloads\Korea.jpg";
             Bitmap bitmap = new Bitmap(imageUrl, true);
             Bitmap newBitmap = AsciiArt.GetResizedBitmap(bitmap, 256);
             newBitmap.Save(imageUrl + "-new.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            */
+            string imagePath = @"C:\Users\haenn\Downloads\Korea.jpg";
+            Bitmap bitmap = new Bitmap(imagePath, true);
+            AsciiArt asciiArt = new AsciiArt(bitmap, 256);
         }
     }
 }
