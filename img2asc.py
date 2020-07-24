@@ -4,6 +4,15 @@ from PIL import Image
 import math
 
 
+class AsciiArt:
+    def __init__(self, img_path: str):
+        # self.image_path = img_path
+        self.original_image = Image.open(img_path)
+
+    def cnvt2asc(self, width):
+        pass
+
+
 def resize_img(original_image, width):
     """이미지의 크기를 변경합니다.
 
@@ -23,6 +32,7 @@ def resize_img(original_image, width):
 
     return resized_img
 
+
 def convert_img2ascii(image):
     ascii_str = ""
 
@@ -30,8 +40,8 @@ def convert_img2ascii(image):
     for y in range(rgbimg.size[1]):
         for x in range(rgbimg.size[0]):
             r, g, b = rgbimg.getpixel((x, y))
-            rgb = (r + g+ b) / 3
-            
+            rgb = (r + g + b) / 3
+
 
 def _main():
     img = Image.open("./testimg.jpg")
