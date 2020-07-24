@@ -12,8 +12,8 @@ Generate ascii art from image
 
 ### Dev Tools
 
-+ C# (.NET Framework 4.7+)
-+ Microsoft Visual Studio
++ Python 3.8
++ PyCharm 2020 Community Edition
 
 ### Environments
 
