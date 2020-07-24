@@ -16,8 +16,7 @@ def resize_img(original_image, width):
     """
     # scale factor = ascii width / image width
     # ascii height = scale factor * image height
-    original_width = original_image.size[0]
-    original_height = original_image.size[1]
+    original_width, original_height = original_image.size
     height = math.ceil(width / original_width * original_height)
 
     resized_img = original_image.resize((width, height))
@@ -25,13 +24,20 @@ def resize_img(original_image, width):
     return resized_img
 
 def convert_img2ascii(image):
-    pass
+    ascii_str = ""
+
+    rgbimg = image.convert("RGB")
+    for y in range(rgbimg.size[1]):
+        for x in range(rgbimg.size[0]):
+            r, g, b = rgbimg.getpixel((x, y))
+            rgb = (r + g+ b) / 3
+            
 
 def _main():
     img = Image.open("./testimg.jpg")
     print(type(img))
     resized_img = resize_img(img, 80)
-    resized_img.show()
+    resized_img.convert("RGB").show()
 
 
 if __name__ == '__main__':
