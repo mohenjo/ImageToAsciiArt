@@ -29,6 +29,6 @@ Generate ascii art from image
 
 ## License
 
-+ [MIT License](https://github.com/mohenjo/HangulUtils/blob/master/LICENSE)
++ MIT License
 
 
