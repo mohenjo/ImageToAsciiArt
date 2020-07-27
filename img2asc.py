@@ -9,11 +9,19 @@ class AsciiArt:
     __grayscale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. "
 
     def __init__(self, img_path: str):
+        """이미지 파일의 경로로부터 인스턴스를 생성합니다.
+
+        Args:
+            img_path: 이미지 파일의 경로
+        """
         self._img_path = img_path
         self._original_img_obj = Image.open(img_path)
 
-    def show_original_img(self):
-        self._original_img_obj.show()
+    def get_original_img_obj(self):
+        return self._original_img_obj
+
+    def get_resized_img_obj(self, width: int):
+        return AsciiArt._resize_img(self._original_img_obj, width)
 
     def get_img_path(self):
         return self._img_path
@@ -42,22 +50,18 @@ class AsciiArt:
         return resized_img
 
 
-
-
-def convert_img2ascii(image):
-    ascii_str = ""
-
-    rgbimg = image.convert("RGB")
-    for y in range(rgbimg.size[1]):
-        for x in range(rgbimg.size[0]):
-            r, g, b = rgbimg.getpixel((x, y))
-            rgb = (r + g + b) / 3
+# def convert_img2ascii(image):
+#     ascii_str = ""
+#
+#     rgbimg = image.convert("RGB")
+#     for y in range(rgbimg.size[1]):
+#         for x in range(rgbimg.size[0]):
+#             r, g, b = rgbimg.getpixel((x, y))
+#             rgb = (r + g + b) / 3
 
 
 def _main():
     img = AsciiArt("./testimg.jpg")
-    img.show_original_img()
-    print(img.get_img_path())
 
     # print(AsciiArt.grayscale)
 
