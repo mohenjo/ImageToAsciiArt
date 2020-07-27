@@ -13,15 +13,16 @@ namespace ConsoleTest
     {
         static void Main()
         {
-            Bitmap sampleBitmap = Properties.Resources.testimg;
-            /*
-            string OriginalImagePath = Path.Combine(System.Environment.CurrentDirectory, "testimg.jpg");
+            Bitmap sampleBitmap = Properties.Resources.cat;
+            string OriginalImagePath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.png");
             sampleBitmap.Save(OriginalImagePath);
             System.Diagnostics.Process.Start(OriginalImagePath);
-            */
 
             AsciiArt asciiArt = new AsciiArt(sampleBitmap);
 
+            string asciiArtString = asciiArt.GetAsciiArt(256, true);
+            string AsciiArtPath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.txt");
+            File.WriteAllText(AsciiArtPath, asciiArtString, Encoding.Default);
         }
     }
 }
