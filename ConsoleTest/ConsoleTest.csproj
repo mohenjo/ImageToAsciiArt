@@ -68,10 +68,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sample_image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cat.jpg" />
+    <None Include="Resources\sample_image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

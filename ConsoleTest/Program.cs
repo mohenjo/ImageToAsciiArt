@@ -13,8 +13,8 @@ namespace ConsoleTest
     {
         static void Main()
         {
-            Bitmap sampleBitmap = Properties.Resources.cat;
-            string OriginalImagePath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.png");
+            Bitmap sampleBitmap = Properties.Resources.sample_image;
+            string OriginalImagePath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.jpg");
             sampleBitmap.Save(OriginalImagePath);
             System.Diagnostics.Process.Start(OriginalImagePath);
 
@@ -23,6 +23,7 @@ namespace ConsoleTest
             string asciiArtString = asciiArt.GetAsciiArt(256, true);
             string AsciiArtPath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.txt");
             File.WriteAllText(AsciiArtPath, asciiArtString, Encoding.Default);
+            System.Diagnostics.Process.Start(AsciiArtPath);
         }
     }
 }
