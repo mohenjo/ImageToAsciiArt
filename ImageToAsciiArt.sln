@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageToAsciiArt", "ImageToAsciiArt\ImageToAsciiArt.csproj", "{68686E63-88A4-4141-B066-B2FC8F0D5C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{7E9E033C-2C89-41F3-A362-8E93B28339C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68686E63-88A4-4141-B066-B2FC8F0D5C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68686E63-88A4-4141-B066-B2FC8F0D5C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68686E63-88A4-4141-B066-B2FC8F0D5C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68686E63-88A4-4141-B066-B2FC8F0D5C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9E033C-2C89-41F3-A362-8E93B28339C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9E033C-2C89-41F3-A362-8E93B28339C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9E033C-2C89-41F3-A362-8E93B28339C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9E033C-2C89-41F3-A362-8E93B28339C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB3757C8-5DDE-4F2F-AA6C-7E7D41A05A05}
+	EndGlobalSection
+EndGlobal
