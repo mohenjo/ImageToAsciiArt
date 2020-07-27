@@ -20,7 +20,7 @@ namespace ConsoleTest
 
             AsciiArt asciiArt = new AsciiArt(sampleBitmap);
 
-            string asciiArtString = asciiArt.GetAsciiArt(256, true);
+            string asciiArtString = asciiArt.GetAsciiArt(500, true);
             string AsciiArtPath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.txt");
             File.WriteAllText(AsciiArtPath, asciiArtString, Encoding.Default);
             System.Diagnostics.Process.Start(AsciiArtPath);
