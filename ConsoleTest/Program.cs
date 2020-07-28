@@ -20,8 +20,13 @@ namespace ConsoleTest
 
             AsciiArt asciiArt = new AsciiArt(sampleBitmap);
 
-            string asciiArtString = asciiArt.GetAsciiArt(200, true);
-            string AsciiArtPath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.txt");
+            //string asciiArtString = asciiArt.GetAsciiArt(200, true);
+            //string AsciiArtPath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.txt");
+            //File.WriteAllText(AsciiArtPath, asciiArtString, Encoding.Default);
+            //System.Diagnostics.Process.Start(AsciiArtPath);
+
+            string asciiArtString = asciiArt.GetAsciiArtHtml(200, AsciiArt.ArtType.Html, true);
+            string AsciiArtPath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.html");
             File.WriteAllText(AsciiArtPath, asciiArtString, Encoding.Default);
             System.Diagnostics.Process.Start(AsciiArtPath);
         }
