@@ -23,6 +23,12 @@ namespace ImageToAsciiArt
             this.OriginalBitmap = bitmap;
         }
 
+        public enum ArtType
+        {
+            Text,
+            Html
+        }
+
         /// <summary>
         /// 원본 이미지의 비트맵
         /// </summary>
@@ -41,7 +47,7 @@ namespace ImageToAsciiArt
                 int maxWidth = OriginalBitmap.Width;
                 throw new ArgumentException($"아스키 아트의 폭은 [80, 원본이미지 폭({maxWidth}픽셀)]의 범위 내에 있어야 합니다.");
             }
-            
+
             Bitmap bitmap = GetResizedBitmap(OriginalBitmap, width);
 
             StringBuilder sb = new StringBuilder();
@@ -62,6 +68,68 @@ namespace ImageToAsciiArt
                     sb.Append(GrayScale[grayIndex]);
                 }
                 sb.AppendLine();
+            }
+            return sb.ToString();
+        }
+
+        public string GetAsciiArtHtml(int width, ArtType artType, bool isOnWhiteBackground = true)
+        {
+            if (width < 80 || width > OriginalBitmap.Width)
+            {
+                int maxWidth = OriginalBitmap.Width;
+                throw new ArgumentException($"아스키 아트의 폭은 [80, 원본이미지 폭({maxWidth}픽셀)]의 범위 내에 있어야 합니다.");
+            }
+
+            Bitmap bitmap = GetResizedBitmap(OriginalBitmap, width);
+
+            StringBuilder sb = new StringBuilder();
+            if (artType == ArtType.Html)
+            {
+                sb.AppendLine("<!DOCTYPE html>");
+                sb.AppendLine("<html>");
+                sb.AppendLine("<head>");
+                sb.AppendLine(" <title></title>");
+                sb.AppendLine(" <meta charset = \"utf-8\" />");
+                sb.AppendLine("</head>");
+                sb.AppendLine("<body>");
+            }
+            for (int h = 0; h < bitmap.Height; h++)
+            {
+                for (int w = 0; w < bitmap.Width; w++)
+                {
+                    Color pixelColor = bitmap.GetPixel(w, h);
+                    int brightness = (int)(0.299 * pixelColor.R + 0.587 * pixelColor.G + 0.114 * pixelColor.B);
+                    //int brightness = (int)(pixelColor.R + pixelColor.G + pixelColor.B) / 3;
+                    Color grayColor = Color.FromArgb(brightness, brightness, brightness);
+
+                    int grayIndex = (grayColor.R * (GrayScale.Length - 1)) / 255;
+                    if (!isOnWhiteBackground)
+                    {
+                        grayIndex = (GrayScale.Length - 1) - grayIndex;
+                    }
+
+                    if (artType == ArtType.Text)
+                    {
+                        sb.Append(GrayScale[grayIndex]);
+                    }
+                    else
+                    {
+                        sb.Append($"<font face = \"consolas\" style=\"color: rgb({pixelColor.R}, {pixelColor.G}, {pixelColor.B});\">{GrayScale[grayIndex]}</font>");
+                    }
+                }
+                if (artType == ArtType.Text)
+                {
+                    sb.AppendLine();
+                }
+                else
+                {
+                    sb.AppendLine("<br>"); 
+                }
+            }
+            if (artType == ArtType.Html)
+            {
+                sb.AppendLine("</body>");
+                sb.AppendLine("</html>");
             }
             return sb.ToString();
         }
