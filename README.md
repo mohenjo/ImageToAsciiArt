@@ -1,18 +1,26 @@
 # Image to Ascii Art
 
-Generate ascii art from image
+Generating text/html ascii art from image (.NET Framework library)
 
 ## `AsciiArt` Class
 
 ### Constructor
 
-`public AsciiArt(Bitmap bitmap)`
++ `public AsciiArt(Bitmap bitmap)`
 
 ### Enum
 
++ `AsciiArt.ArtType.Text`: return as string
++ `AsciiArt.ArtType.Html`: return as coloured html
+
 ### Properties
 
++ `public Bitmap OriginalBitmap`
+
 ### Method
+
++ `public string GetAsciiArt(int width, ArtType artType)`
+  + `int width`: generated width of ascii art
 
 
 
