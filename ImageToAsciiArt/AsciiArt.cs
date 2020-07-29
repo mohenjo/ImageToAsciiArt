@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
+using System.Text;
 
 namespace ImageToAsciiArt
 {
@@ -38,9 +35,9 @@ namespace ImageToAsciiArt
         /// 원본 이미지에 대한 아스키 아트 스트링을 반환합니다.
         /// </summary>
         /// <param name="width">아스키 아트의 폭</param>
-        /// <param name="isOnWhiteBackground">흰색 배경에서의 표시를 기준으로 그레이 스케일을 계산할 것인지의 여부</param>
+        /// <param name="artType">일반 텍스트 또는 html 규격의 텍스트를 선택</param>
         /// <returns></returns>
-        public string GetAsciiArt(int width, bool isOnWhiteBackground = true)
+        public string GetAsciiArt(int width, ArtType artType)
         {
             if (width < 80 || width > OriginalBitmap.Width)
             {
@@ -51,48 +48,24 @@ namespace ImageToAsciiArt
             Bitmap bitmap = GetResizedBitmap(OriginalBitmap, width);
 
             StringBuilder sb = new StringBuilder();
-            for (int h = 0; h < bitmap.Height; h++)
-            {
-                for (int w = 0; w < bitmap.Width; w++)
-                {
-                    Color pixelColor = bitmap.GetPixel(w, h);
-                    int brightness = (int)(0.299 * pixelColor.R + 0.587 * pixelColor.G + 0.114 * pixelColor.B);
-                    //int brightness = (int)(pixelColor.R + pixelColor.G + pixelColor.B) / 3;
-                    Color grayColor = Color.FromArgb(brightness, brightness, brightness);
 
-                    int grayIndex = (grayColor.R * (GrayScale.Length - 1)) / 255;
-                    if (!isOnWhiteBackground)
-                    {
-                        grayIndex = (GrayScale.Length - 1) - grayIndex;
-                    }
-                    sb.Append(GrayScale[grayIndex]);
-                }
-                sb.AppendLine();
-            }
-            return sb.ToString();
-        }
-
-        public string GetAsciiArtHtml(int width, ArtType artType, bool isOnWhiteBackground = true)
-        {
-            if (width < 80 || width > OriginalBitmap.Width)
-            {
-                int maxWidth = OriginalBitmap.Width;
-                throw new ArgumentException($"아스키 아트의 폭은 [80, 원본이미지 폭({maxWidth}픽셀)]의 범위 내에 있어야 합니다.");
-            }
-
-            Bitmap bitmap = GetResizedBitmap(OriginalBitmap, width);
-
-            StringBuilder sb = new StringBuilder();
             if (artType == ArtType.Html)
             {
                 sb.AppendLine("<!DOCTYPE html>");
                 sb.AppendLine("<html>");
                 sb.AppendLine("<head>");
-                sb.AppendLine(" <title></title>");
-                sb.AppendLine(" <meta charset = \"utf-8\" />");
+                sb.AppendLine("<style>");
+                sb.AppendLine("body {");
+                sb.AppendLine("font-family: monospace !important;");
+                sb.AppendLine("font-size: 5px !important;");
+                sb.AppendLine("}");
+                sb.AppendLine("</style>");
+                sb.AppendLine("<meta charset=\"UTF-8\">");
+                sb.AppendLine("<title>Image to Ascii Art</title>");
                 sb.AppendLine("</head>");
                 sb.AppendLine("<body>");
             }
+
             for (int h = 0; h < bitmap.Height; h++)
             {
                 for (int w = 0; w < bitmap.Width; w++)
@@ -103,10 +76,6 @@ namespace ImageToAsciiArt
                     Color grayColor = Color.FromArgb(brightness, brightness, brightness);
 
                     int grayIndex = (grayColor.R * (GrayScale.Length - 1)) / 255;
-                    if (!isOnWhiteBackground)
-                    {
-                        grayIndex = (GrayScale.Length - 1) - grayIndex;
-                    }
 
                     if (artType == ArtType.Text)
                     {
@@ -114,23 +83,27 @@ namespace ImageToAsciiArt
                     }
                     else
                     {
-                        sb.Append($"<font face = \"consolas\" style=\"color: rgb({pixelColor.R}, {pixelColor.G}, {pixelColor.B});\">{GrayScale[grayIndex]}</font>");
+                        string content = grayIndex == 69 ? "&nbsp;" : GrayScale[grayIndex].ToString();
+                        sb.Append($"<span style=\"color: rgb({pixelColor.R}, {pixelColor.G}, {pixelColor.B});\">{content}</span>");
                     }
                 }
+
                 if (artType == ArtType.Text)
                 {
                     sb.AppendLine();
                 }
                 else
                 {
-                    sb.AppendLine("<br>"); 
+                    sb.AppendLine("<br>");
                 }
             }
+
             if (artType == ArtType.Html)
             {
                 sb.AppendLine("</body>");
                 sb.AppendLine("</html>");
             }
+
             return sb.ToString();
         }
 
