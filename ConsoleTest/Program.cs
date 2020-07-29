@@ -18,13 +18,13 @@ namespace ConsoleTest
             AsciiArt asciiArt = new AsciiArt(sampleBitmap);
 
             // 아스키 아트 생성 - text
-            string asciiArtText = asciiArt.GetAsciiArt(200, AsciiArt.ArtType.Text);
+            string asciiArtText = asciiArt.GetAsciiArt(120, AsciiArt.ArtType.Text);
             string AsciiArtTextPath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.txt");
             File.WriteAllText(AsciiArtTextPath, asciiArtText, Encoding.Default);
             System.Diagnostics.Process.Start(AsciiArtTextPath);
 
             // 아스키 아트 생성 - html
-            string asciiArtHtml = asciiArt.GetAsciiArt(200, AsciiArt.ArtType.Html);
+            string asciiArtHtml = asciiArt.GetAsciiArt(120, AsciiArt.ArtType.Html);
             string AsciiArtHtmlPath = Path.Combine(System.Environment.CurrentDirectory, "sample_image.html");
             File.WriteAllText(AsciiArtHtmlPath, asciiArtHtml, Encoding.Default);
             System.Diagnostics.Process.Start(AsciiArtHtmlPath);
