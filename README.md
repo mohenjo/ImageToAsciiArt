@@ -2,6 +2,18 @@
 
 Generate ascii art from image
 
+## `AsciiArt` Class
+
+### Constructor
+
+`public AsciiArt(Bitmap bitmap)`
+
+### Enum
+
+### Properties
+
+### Method
+
 
 
 ## Project Info
