@@ -2,6 +2,9 @@
 
 Generating text/html ascii art from image (.NET Framework library)
 
+![text_screenshot](https://user-images.githubusercontent.com/66149782/88767124-239c8480-d1b4-11ea-98ea-3d01743d67d4.jpg){: width="192" height="128"}
+![html_screenshot](https://user-images.githubusercontent.com/66149782/88767687-f6040b00-d1b4-11ea-8ad4-d700b0df0179.jpg){: width="192" height="128"}
+
 ## `AsciiArt` Class
 
 ### Constructor
@@ -20,7 +23,7 @@ Generating text/html ascii art from image (.NET Framework library)
 ### Method
 
 + `public string GetAsciiArt(int width, ArtType artType)`
-  + `int width`: generated width of ascii art
+  + `int width`: the width of ascii art
 
 
 
